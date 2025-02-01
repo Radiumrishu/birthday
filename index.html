@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, [Name]! 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS */
+        body {
+            margin: 0;
+            background: #ffe6f2;
+            font-family: 'Dancing Script', cursive;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Animation */
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4em;
+            color: #ff3385;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color: #ff3385;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 15px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Love Letter Section */
+        .love-letter {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 0 20px rgba(255, 51, 133, 0.1);
+            position: relative;
+        }
+
+        /* Confetti Button */
+        .confetti-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 40px;
+            background: #ff3385;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .confetti-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="heart" style="left: 10%; top: 20%;">❤️</div>
+            <div class="heart" style="right: 15%; top: 30%;">💖</div>
+            <h1>Happy Birthday, [Name]! 🎉</h1>
+            <p style="font-size: 1.5em;">You Make My World Sparkle ✨</p>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="gallery">
+            <img src="your-image1.jpg" alt="Memory 1">
+            <img src="your-image2.jpg" alt="Memory 2">
+            <img src="your-image3.jpg" alt="Memory 3">
+        </div>
+
+        <!-- Love Letter -->
+        <div class="love-letter">
+            <h2>To My Special Someone 🌹</h2>
+            <p id="typed-text"></p>
+        </div>
+
+        <!-- Interactive Quiz -->
+        <div class="quiz">
+            <h2>How Well Do You Know Me? 😉</h2>
+            <!-- Add quiz questions here -->
+        </div>
+
+        <!-- Confetti Button -->
+        <button class="confetti-btn" onclick="createConfetti()">Click for Magic! ✨</button>
+    </div>
+
+    <script>
+        // Typing Animation for Love Letter
+        const text = "Your smile lights up my world... [Add your personal message here]";
+        let index = 0;
+        
+        function typeText() {
+            if (index < text.length) {
+                document.getElementById("typed-text").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeText, 50);
+            }
+        }
+        typeText();
+
+        // Confetti Effect
+        function createConfetti() {
+            const confettiEmojis = ['🎉', '🎊', '💖', '✨', '🌸', '💫'];
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.innerHTML = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                confetti.style.position = 'fixed';
+                confetti.style.left = Math.random() * window.innerWidth + 'px'; // Use window.innerWidth for mobile
+                confetti.style.fontSize = Math.random() * 20 + 10 + 'px';
+                confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear`;
+                confetti.style.opacity = Math.random();
+                confetti.style.zIndex = 9999; // Ensure confetti appears above other elements
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+    </script>
+</body>
+</html>
