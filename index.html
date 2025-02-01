@@ -71,8 +71,8 @@
             position: relative;
         }
 
-        /* Confetti Button */
-        .confetti-btn {
+        /* Buttons */
+        .btn {
             display: block;
             margin: 30px auto;
             padding: 15px 40px;
@@ -83,9 +83,11 @@
             font-size: 1.2em;
             cursor: pointer;
             transition: transform 0.3s;
+            text-decoration: none;
+            text-align: center;
         }
 
-        .confetti-btn:hover {
+        .btn:hover {
             transform: scale(1.1);
         }
 
@@ -131,7 +133,10 @@
         </div>
 
         <!-- Confetti Button -->
-        <button class="confetti-btn" onclick="createConfetti()">Click for Magic! ✨</button>
+        <button class="btn" onclick="createConfetti()">Click for Magic! ✨</button>
+
+        <!-- Redirect Button -->
+        <a href="page2.html" class="btn">See Something Special 💕</a>
     </div>
 
     <script>
@@ -155,11 +160,11 @@
                 const confetti = document.createElement('div');
                 confetti.innerHTML = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
                 confetti.style.position = 'fixed';
-                confetti.style.left = Math.random() * window.innerWidth + 'px'; // Use window.innerWidth for mobile
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
                 confetti.style.fontSize = Math.random() * 20 + 10 + 'px';
                 confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear`;
                 confetti.style.opacity = Math.random();
-                confetti.style.zIndex = 9999; // Ensure confetti appears above other elements
+                confetti.style.zIndex = 9999;
                 document.body.appendChild(confetti);
                 
                 setTimeout(() => confetti.remove(), 5000);
